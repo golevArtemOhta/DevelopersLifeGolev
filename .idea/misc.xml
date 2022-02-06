@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/activity_main.xml" value="0.12318840579710146" />
-        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/fragment_gif.xml" value="0.33" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout-land/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/fragment_gif.xml" value="0.18" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/fragment_gif_hot.xml" value="0.1" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/fragment_gif_latest.xml" value="0.10364583333333334" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/fragment_gif_top.xml" value="0.10052083333333334" />
+        <entry key="..\:/Users/79992/AndroidStudioProjects/AndroidUI2/DevelopersLifeGolev/app/src/main/res/layout/fragment_login.xml" value="0.1" />
       </map>
     </option>
   </component>

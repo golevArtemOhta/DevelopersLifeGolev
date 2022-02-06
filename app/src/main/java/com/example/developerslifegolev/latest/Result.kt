@@ -1,6 +1,6 @@
-package com.example.developerslifegolev
+package com.example.developerslifegolev.latest
 
-data class GifInfoItem(
+data class Result(
     val author: String,
     val canVote: Boolean,
     val commentsCount: Int,

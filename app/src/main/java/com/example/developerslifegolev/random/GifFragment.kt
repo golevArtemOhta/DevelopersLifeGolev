@@ -1,4 +1,4 @@
-package com.example.developerslifegolev
+package com.example.developerslifegolev.random
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.example.developerslifegolev.databinding.FragmentGifBinding
 
@@ -83,10 +82,13 @@ class GifFragment : Fragment() {
     }
 
     private fun loadImage(gifURL: String){
+        if (getActivity() == null) {
+            return
+        }
         Glide.with(this)
             .asGif()
             .load(gifURL)
-            .into(binding.imageViewGif);
+            .into(binding.imageViewGif)
     }
 
 }
