@@ -10,6 +10,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.example.developerslifegolev.databinding.FragmentGifBinding
 
 
@@ -69,10 +73,14 @@ class GifTopFragment : Fragment() {
         gifTopInfoViewModel.itemGifTopInfo.observe(activity as LifecycleOwner, Observer {
             gifTopInfoItem = it
             val listResult = gifTopInfoItem.result
-            gifCacheList.addAll(listResult)
-            position++
-            loadImage(listResult[0].gifURL)
-            binding.textViewGif.text = listResult[0].description
+            if(listResult.size == 0){
+                binding.textViewGif.text = "The \"top\" tab is empty"
+            }else {
+                gifCacheList.addAll(listResult)
+                position++
+                loadImage(listResult[0].gifURL)
+                binding.textViewGif.text = listResult[0].description
+            }
         })
     }
 
@@ -85,9 +93,32 @@ class GifTopFragment : Fragment() {
         if (getActivity() == null) {
             return
         }
+        binding.progressBar.visibility = View.VISIBLE
         Glide.with(this)
             .asGif()
             .load(gifURL)
+            .listener(object : RequestListener<GifDrawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<GifDrawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.textViewGif.text = "Loadind is failed"
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: GifDrawable?,
+                    model: Any?,
+                    target: Target<GifDrawable>?,
+                    dataSource: com.bumptech.glide.load.DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.progressBar.visibility = View.GONE
+                    return false
+                }
+            })
             .into(binding.imageViewGif)
     }
 

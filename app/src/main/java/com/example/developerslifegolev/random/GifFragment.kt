@@ -1,5 +1,6 @@
 package com.example.developerslifegolev.random
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.developerslifegolev.databinding.FragmentGifBinding
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+
+
+
+
 
 
 class GifFragment : Fragment() {
@@ -31,8 +40,6 @@ class GifFragment : Fragment() {
         gifInfoViewModel = ViewModelProvider(requireActivity()).get(GifInfoViewModel::class.java)
         binding = FragmentGifBinding.inflate(inflater)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,10 +92,34 @@ class GifFragment : Fragment() {
         if (getActivity() == null) {
             return
         }
+        binding.progressBar.visibility = View.VISIBLE
         Glide.with(this)
             .asGif()
             .load(gifURL)
+            .listener(object : RequestListener<GifDrawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<GifDrawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.textViewGif.text = "Loadind is failed"
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: GifDrawable?,
+                    model: Any?,
+                    target: Target<GifDrawable>?,
+                    dataSource: com.bumptech.glide.load.DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.progressBar.visibility = View.GONE
+                    return false
+                }
+            })
             .into(binding.imageViewGif)
+
     }
 
 }
