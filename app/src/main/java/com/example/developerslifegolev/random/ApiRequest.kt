@@ -1,4 +1,4 @@
-package com.example.developerslifegolev
+package com.example.developerslifegolev.random
 
 import retrofit2.http.GET
 

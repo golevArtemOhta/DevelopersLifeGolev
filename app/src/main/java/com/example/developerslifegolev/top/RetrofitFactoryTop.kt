@@ -1,13 +1,13 @@
-package com.example.developerslifegolev
+package com.example.developerslifegolev.top
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitFactory {
+object RetrofitFactoryTop {
 
-    fun new(apiRequest: Class<ApiRequest>) = Retrofit.Builder()
+    fun new() = Retrofit.Builder()
         .baseUrl("https://developerslife.ru")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(apiRequest)
+        .create(ApiRequestTop::class.java)
 }
