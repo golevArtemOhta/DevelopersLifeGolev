@@ -3,13 +3,14 @@ package com.example.developerslifegolev.latest
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.developerslifegolev.random.RetrofitFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 open class GifLatestInfoViewModel: ViewModel() {
     val itemGifLatestInfo = MutableLiveData<GifLatestInfoItem>()
-    private val api = RetrofitFactoryLatest.new()
+    private val api = RetrofitFactory.new()
     private var job: Job? = null
 
     fun request() {

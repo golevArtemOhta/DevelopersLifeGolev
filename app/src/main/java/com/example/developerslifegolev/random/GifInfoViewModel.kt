@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 open class GifInfoViewModel: ViewModel() {
     val itemGifInfo = MutableLiveData<GifInfoItem>()
-    private val api = RetrofitFactory.new(ApiRequest::class.java)
+    private val api = RetrofitFactory.new()
     private var job: Job? = null
 
     fun request() {

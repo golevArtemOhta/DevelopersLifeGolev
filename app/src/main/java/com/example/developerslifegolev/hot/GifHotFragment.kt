@@ -74,6 +74,7 @@ class GifHotFragment : Fragment() {
             val listResult = gifHotInfoItem.result
             if(listResult.size == 0){
                 binding.textViewGif.text = "The \"hot\" tab is empty"
+                binding.progressBar.visibility = View.INVISIBLE
             }else{
                 gifCacheList.addAll(listResult)
                 position++
@@ -104,6 +105,7 @@ class GifHotFragment : Fragment() {
                     isFirstResource: Boolean
                 ): Boolean {
                     binding.textViewGif.text = "Loadind is failed"
+                    binding.progressBar.visibility = View.INVISIBLE
                     return false
                 }
 
